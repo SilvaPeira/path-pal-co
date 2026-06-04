@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+
 
 const navItems = [
   "Como funciona",
@@ -38,9 +40,11 @@ export function AgioHeader() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <Button variant="ghost" className="font-semibold">Entrar</Button>
-          <Button className="bg-[image:var(--gradient-hero)] hover:opacity-90 font-semibold shadow-[var(--shadow-elegant)]">
-            Baixar App
+          <Button asChild variant="ghost" className="font-semibold">
+            <Link to="/auth">Entrar</Link>
+          </Button>
+          <Button asChild className="bg-[image:var(--gradient-hero)] hover:opacity-90 font-semibold shadow-[var(--shadow-elegant)]">
+            <Link to="/auth">Baixar App</Link>
           </Button>
         </div>
 
@@ -67,8 +71,12 @@ export function AgioHeader() {
               </a>
             ))}
             <div className="flex gap-2 pt-2">
-              <Button variant="ghost" className="flex-1">Entrar</Button>
-              <Button className="flex-1 bg-[image:var(--gradient-hero)]">Baixar App</Button>
+              <Button asChild variant="ghost" className="flex-1">
+                <Link to="/auth" onClick={() => setOpen(false)}>Entrar</Link>
+              </Button>
+              <Button asChild className="flex-1 bg-[image:var(--gradient-hero)]">
+                <Link to="/auth" onClick={() => setOpen(false)}>Baixar App</Link>
+              </Button>
             </div>
           </nav>
         </div>
