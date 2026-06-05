@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as EsqueciSenhaRouteImport } from './routes/esqueci-senha'
+import { Route as CadastroMotoristaRouteImport } from './routes/cadastro-motorista'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -22,6 +23,11 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
 const EsqueciSenhaRoute = EsqueciSenhaRouteImport.update({
   id: '/esqueci-senha',
   path: '/esqueci-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadastroMotoristaRoute = CadastroMotoristaRouteImport.update({
+  id: '/cadastro-motorista',
+  path: '/cadastro-motorista',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -38,12 +44,14 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/cadastro-motorista': typeof CadastroMotoristaRoute
   '/esqueci-senha': typeof EsqueciSenhaRoute
   '/reset-password': typeof ResetPasswordRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/cadastro-motorista': typeof CadastroMotoristaRoute
   '/esqueci-senha': typeof EsqueciSenhaRoute
   '/reset-password': typeof ResetPasswordRoute
 }
@@ -51,20 +59,38 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/cadastro-motorista': typeof CadastroMotoristaRoute
   '/esqueci-senha': typeof EsqueciSenhaRoute
   '/reset-password': typeof ResetPasswordRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/esqueci-senha' | '/reset-password'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/cadastro-motorista'
+    | '/esqueci-senha'
+    | '/reset-password'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/esqueci-senha' | '/reset-password'
-  id: '__root__' | '/' | '/auth' | '/esqueci-senha' | '/reset-password'
+  to:
+    | '/'
+    | '/auth'
+    | '/cadastro-motorista'
+    | '/esqueci-senha'
+    | '/reset-password'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/cadastro-motorista'
+    | '/esqueci-senha'
+    | '/reset-password'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  CadastroMotoristaRoute: typeof CadastroMotoristaRoute
   EsqueciSenhaRoute: typeof EsqueciSenhaRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
 }
@@ -83,6 +109,13 @@ declare module '@tanstack/react-router' {
       path: '/esqueci-senha'
       fullPath: '/esqueci-senha'
       preLoaderRoute: typeof EsqueciSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cadastro-motorista': {
+      id: '/cadastro-motorista'
+      path: '/cadastro-motorista'
+      fullPath: '/cadastro-motorista'
+      preLoaderRoute: typeof CadastroMotoristaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -105,6 +138,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  CadastroMotoristaRoute: CadastroMotoristaRoute,
   EsqueciSenhaRoute: EsqueciSenhaRoute,
   ResetPasswordRoute: ResetPasswordRoute,
 }
