@@ -32,7 +32,7 @@ export function AgioHeader() {
             <a
               key={item}
               href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              className="text-sm font-bold text-foreground/80 hover:text-primary transition-colors uppercase"
             >
               {item}
             </a>

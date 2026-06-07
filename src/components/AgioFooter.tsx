@@ -16,7 +16,7 @@ export function AgioFooter() {
 
           <nav className="flex flex-wrap gap-x-6 gap-y-3">
             {links.map((l) => (
-              <a key={l} href="#" className="font-bold text-sm hover:text-primary-glow transition-colors">
+              <a key={l} href="#" className="font-bold text-sm hover:text-primary-glow transition-colors uppercase">
                 {l}
               </a>
             ))}

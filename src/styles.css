@@ -65,7 +65,7 @@
 :root {
   --radius: 0.875rem;
   /* ÀgioTec brand — mint sustentável */
-  --background: oklch(0.985 0.015 160);
+  --background: #F5FFFA;
   --foreground: oklch(0.22 0.03 165);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.22 0.03 165);

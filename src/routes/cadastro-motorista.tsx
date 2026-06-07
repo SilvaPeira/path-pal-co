@@ -602,7 +602,7 @@ function CadastroMotoristaPage() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="space-y-1.5">
-      <Label className="text-sm">{label}</Label>
+      <Label className="text-sm font-bold uppercase">{label}</Label>
       {children}
     </div>
   );

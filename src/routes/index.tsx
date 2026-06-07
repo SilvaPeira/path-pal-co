@@ -68,11 +68,11 @@ function Index() {
               Conecte-se com motoristas e passageiros que vão para o mesmo destino.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <Button size="lg" className="bg-[image:var(--gradient-hero)] hover:opacity-90 font-semibold text-base h-12 px-6 shadow-[var(--shadow-elegant)]">
-                Quero ser passageiro 🚗
+              <Button asChild size="lg" className="bg-[image:var(--gradient-hero)] hover:opacity-90 font-semibold text-base h-12 px-6 shadow-[var(--shadow-elegant)]">
+                <Link to="/cadastro-passageiro">Quero ser passageiro 🚗</Link>
               </Button>
-              <Button size="lg" variant="outline" className="bg-background text-foreground hover:bg-background/90 border-0 font-semibold text-base h-12 px-6">
-                Quero oferecer carona 🚙
+              <Button asChild size="lg" variant="outline" className="bg-background text-foreground hover:bg-background/90 border-0 font-semibold text-base h-12 px-6">
+                <Link to="/cadastro-motorista">Quero oferecer carona 🚙</Link>
               </Button>
             </div>
           </div>

@@ -153,7 +153,7 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="login-email">E-mail</Label>
+        <Label htmlFor="login-email" className="font-bold">Login (E-mail ou CPF)</Label>
         <Input
           id="login-email"
           type="email"
@@ -166,7 +166,7 @@ function LoginForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="login-password">Senha</Label>
+        <Label htmlFor="login-password" className="font-bold">Senha</Label>
         <div className="relative">
           <Input
             id="login-password"
@@ -209,6 +209,22 @@ function LoginForm() {
         disabled={loading || blockSec > 0}
       >
         {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Entrar"}
+      </Button>
+      <div className="relative my-4">
+        <div className="absolute inset-0 flex items-center">
+          <span className="w-full border-t" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-background px-2 text-muted-foreground">Ou continue com</span>
+        </div>
+      </div>
+      <Button
+        type="button"
+        variant="outline"
+        className="w-full font-bold"
+        onClick={() => supabase.auth.signInWithOAuth({ provider: 'google' })}
+      >
+        Google
       </Button>
     </form>
   );
