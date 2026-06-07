@@ -16,6 +16,9 @@ export type Database = {
     Tables: {
       profiles: {
         Row: {
+          approval_status: Database["public"]["Enums"]["approval_status"]
+          approved_at: string | null
+          approved_by: string | null
           avatar_url: string | null
           created_at: string
           display_name: string | null
@@ -24,10 +27,14 @@ export type Database = {
           id: string
           is_active: boolean
           phone: string | null
+          rejection_reason: string | null
           updated_at: string
           user_type: Database["public"]["Enums"]["user_type"] | null
         }
         Insert: {
+          approval_status?: Database["public"]["Enums"]["approval_status"]
+          approved_at?: string | null
+          approved_by?: string | null
           avatar_url?: string | null
           created_at?: string
           display_name?: string | null
@@ -36,10 +43,14 @@ export type Database = {
           id: string
           is_active?: boolean
           phone?: string | null
+          rejection_reason?: string | null
           updated_at?: string
           user_type?: Database["public"]["Enums"]["user_type"] | null
         }
         Update: {
+          approval_status?: Database["public"]["Enums"]["approval_status"]
+          approved_at?: string | null
+          approved_by?: string | null
           avatar_url?: string | null
           created_at?: string
           display_name?: string | null
@@ -48,6 +59,7 @@ export type Database = {
           id?: string
           is_active?: boolean
           phone?: string | null
+          rejection_reason?: string | null
           updated_at?: string
           user_type?: Database["public"]["Enums"]["user_type"] | null
         }
@@ -86,6 +98,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_approved: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {
       app_role:
@@ -95,6 +108,7 @@ export type Database = {
         | "passageiro"
         | "empresa"
         | "user"
+      approval_status: "aguardando_aprovacao" | "aprovado" | "rejeitado"
       user_type: "motorista" | "passageiro" | "empresa"
     }
     CompositeTypes: {
@@ -231,6 +245,7 @@ export const Constants = {
         "empresa",
         "user",
       ],
+      approval_status: ["aguardando_aprovacao", "aprovado", "rejeitado"],
       user_type: ["motorista", "passageiro", "empresa"],
     },
   },
