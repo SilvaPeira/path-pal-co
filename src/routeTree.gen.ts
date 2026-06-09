@@ -10,8 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as PagamentosRouteImport } from './routes/pagamentos'
 import { Route as EsqueciSenhaRouteImport } from './routes/esqueci-senha'
+import { Route as EmpresaDashboardRouteImport } from './routes/empresa-dashboard'
+import { Route as CadastroPassageiroRouteImport } from './routes/cadastro-passageiro'
 import { Route as CadastroMotoristaRouteImport } from './routes/cadastro-motorista'
+import { Route as CadastroEmpresaRouteImport } from './routes/cadastro-empresa'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -20,14 +24,34 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PagamentosRoute = PagamentosRouteImport.update({
+  id: '/pagamentos',
+  path: '/pagamentos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsqueciSenhaRoute = EsqueciSenhaRouteImport.update({
   id: '/esqueci-senha',
   path: '/esqueci-senha',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EmpresaDashboardRoute = EmpresaDashboardRouteImport.update({
+  id: '/empresa-dashboard',
+  path: '/empresa-dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadastroPassageiroRoute = CadastroPassageiroRouteImport.update({
+  id: '/cadastro-passageiro',
+  path: '/cadastro-passageiro',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CadastroMotoristaRoute = CadastroMotoristaRouteImport.update({
   id: '/cadastro-motorista',
   path: '/cadastro-motorista',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadastroEmpresaRoute = CadastroEmpresaRouteImport.update({
+  id: '/cadastro-empresa',
+  path: '/cadastro-empresa',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -44,23 +68,35 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/cadastro-empresa': typeof CadastroEmpresaRoute
   '/cadastro-motorista': typeof CadastroMotoristaRoute
+  '/cadastro-passageiro': typeof CadastroPassageiroRoute
+  '/empresa-dashboard': typeof EmpresaDashboardRoute
   '/esqueci-senha': typeof EsqueciSenhaRoute
+  '/pagamentos': typeof PagamentosRoute
   '/reset-password': typeof ResetPasswordRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/cadastro-empresa': typeof CadastroEmpresaRoute
   '/cadastro-motorista': typeof CadastroMotoristaRoute
+  '/cadastro-passageiro': typeof CadastroPassageiroRoute
+  '/empresa-dashboard': typeof EmpresaDashboardRoute
   '/esqueci-senha': typeof EsqueciSenhaRoute
+  '/pagamentos': typeof PagamentosRoute
   '/reset-password': typeof ResetPasswordRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/cadastro-empresa': typeof CadastroEmpresaRoute
   '/cadastro-motorista': typeof CadastroMotoristaRoute
+  '/cadastro-passageiro': typeof CadastroPassageiroRoute
+  '/empresa-dashboard': typeof EmpresaDashboardRoute
   '/esqueci-senha': typeof EsqueciSenhaRoute
+  '/pagamentos': typeof PagamentosRoute
   '/reset-password': typeof ResetPasswordRoute
 }
 export interface FileRouteTypes {
@@ -68,30 +104,46 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/cadastro-empresa'
     | '/cadastro-motorista'
+    | '/cadastro-passageiro'
+    | '/empresa-dashboard'
     | '/esqueci-senha'
+    | '/pagamentos'
     | '/reset-password'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
+    | '/cadastro-empresa'
     | '/cadastro-motorista'
+    | '/cadastro-passageiro'
+    | '/empresa-dashboard'
     | '/esqueci-senha'
+    | '/pagamentos'
     | '/reset-password'
   id:
     | '__root__'
     | '/'
     | '/auth'
+    | '/cadastro-empresa'
     | '/cadastro-motorista'
+    | '/cadastro-passageiro'
+    | '/empresa-dashboard'
     | '/esqueci-senha'
+    | '/pagamentos'
     | '/reset-password'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  CadastroEmpresaRoute: typeof CadastroEmpresaRoute
   CadastroMotoristaRoute: typeof CadastroMotoristaRoute
+  CadastroPassageiroRoute: typeof CadastroPassageiroRoute
+  EmpresaDashboardRoute: typeof EmpresaDashboardRoute
   EsqueciSenhaRoute: typeof EsqueciSenhaRoute
+  PagamentosRoute: typeof PagamentosRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
 }
 
@@ -104,6 +156,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pagamentos': {
+      id: '/pagamentos'
+      path: '/pagamentos'
+      fullPath: '/pagamentos'
+      preLoaderRoute: typeof PagamentosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/esqueci-senha': {
       id: '/esqueci-senha'
       path: '/esqueci-senha'
@@ -111,11 +170,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsqueciSenhaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/empresa-dashboard': {
+      id: '/empresa-dashboard'
+      path: '/empresa-dashboard'
+      fullPath: '/empresa-dashboard'
+      preLoaderRoute: typeof EmpresaDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cadastro-passageiro': {
+      id: '/cadastro-passageiro'
+      path: '/cadastro-passageiro'
+      fullPath: '/cadastro-passageiro'
+      preLoaderRoute: typeof CadastroPassageiroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cadastro-motorista': {
       id: '/cadastro-motorista'
       path: '/cadastro-motorista'
       fullPath: '/cadastro-motorista'
       preLoaderRoute: typeof CadastroMotoristaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cadastro-empresa': {
+      id: '/cadastro-empresa'
+      path: '/cadastro-empresa'
+      fullPath: '/cadastro-empresa'
+      preLoaderRoute: typeof CadastroEmpresaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -138,10 +218,24 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  CadastroEmpresaRoute: CadastroEmpresaRoute,
   CadastroMotoristaRoute: CadastroMotoristaRoute,
+  CadastroPassageiroRoute: CadastroPassageiroRoute,
+  EmpresaDashboardRoute: EmpresaDashboardRoute,
   EsqueciSenhaRoute: EsqueciSenhaRoute,
+  PagamentosRoute: PagamentosRoute,
   ResetPasswordRoute: ResetPasswordRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
